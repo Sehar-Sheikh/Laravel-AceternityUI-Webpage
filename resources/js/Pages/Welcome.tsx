@@ -17,11 +17,15 @@ import {
     IconNewSection,
     IconMessage,
     IconUser,
-    IconMountain
+    IconMountain,
+    IconBook,
+    IconPhone,
+    Icon360View,
+    IconActivity
 } from "@tabler/icons-react";
 import { FloatingNav } from "@/Components/ui/floating-navbar";
 import { TextGenerateEffect } from "@/Components/ui/text-generate-effect";
-import { Vortex } from "@/Components/ui/vortex";
+import { LayoutGrid } from "@/Components/ui/layout-grid";
 
 const navItems = [
     {
@@ -30,19 +34,39 @@ const navItems = [
         icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
+        name: "Events",
+        link: "#events",
+        icon: (
+            <IconActivity className="h-4 w-4 text-neutral-500 dark:text-white" />
+        ),
+    },
+    {
+        name: "Adventures",
+        link: "#adventures",
+        icon: (
+            <IconMountain className="h-4 w-4 text-neutral-500 dark:text-white" />
+        ),
+    },
+    {
+        name: "Stories",
+        link: "#stories",
+        icon: (
+            <IconBook className="h-4 w-4 text-neutral-500 dark:text-white" />
+        ),
+    },
+    {
         name: "About",
-        link: "/about",
+        link: "#about",
         icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
         name: "Contact",
-        link: "/contact",
+        link: "#stories",
         icon: (
-            <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
+            <IconPhone className="h-4 w-4 text-neutral-500 dark:text-white" />
         ),
     },
 ];
-
 
 const words = [
     {
@@ -92,13 +116,6 @@ const links = [
         ),
         href: "#",
     },
-    {
-        title: "Changelog",
-        icon: (
-            <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-    },
 
     {
         title: "Twitter",
@@ -107,15 +124,96 @@ const links = [
         ),
         href: "#",
     },
-    {
-        title: "GitHub",
-        icon: (
-            <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        ),
-        href: "#",
-    },
 ];
 
+const SkeletonOne = () => {
+    return (
+        <div>
+            <p className="font-bold md:text-4xl text-xl text-white">
+            Tech Innovations Expo
+            </p>
+            <p className="font-normal text-base text-white"></p>
+            <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+            Join us for a day of groundbreaking technology and innovations. Discover the latest gadgets and softwares.
+            </p>
+        </div>
+    );
+};
+const SkeletonTwo = () => {
+    return (
+        <div>
+            <p className="font-bold md:text-4xl text-xl text-white">
+            Annual Charity Gala
+            </p>
+            <p className="font-normal text-base text-white"></p>
+            <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+            Attend our Annual Charity Gala to support local communities in need. Enjoy an evening of fine dining.
+            </p>
+        </div>
+    );
+};
+const SkeletonThree = () => {
+    return (
+        <div>
+            <p className="font-bold md:text-4xl text-xl text-white">
+            Creative Arts Festival
+            </p>
+            <p className="font-normal text-base text-white"></p>
+            <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+            Celebrate creativity at our Creative Arts Festival! Experience art displays, live performances.
+            </p>
+        </div>
+    );
+};
+const SkeletonFour = () => {
+    return (
+        <div>
+            <p className="font-bold md:text-4xl text-xl text-white">
+            Health and Wellness Retreat
+            </p>
+            <p className="font-normal text-base text-white"></p>
+            <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+            Rejuvenate your mind and body at our Health and Wellness Retreat. Participate in yoga sessions.
+            </p>
+        </div>
+    );
+};
+
+const cards = [
+    {
+        id: 1,
+        content: <SkeletonOne />,
+        className: "md:col-span-2",
+        thumbnail:
+            // "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://www.creativegroupinc.com/wp-content/uploads/2019/02/user-conference.jpg"
+
+    },
+    {
+        id: 2,
+        content: <SkeletonTwo />,
+        className: "col-span-1",
+        thumbnail:
+            // "https://images.unsplash.com/photo-1503428593586-e225b39bddfe?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://www.creativegroupinc.com/wp-content/uploads/2019/02/product-launch.jpg"
+
+        },
+    {
+        id: 3,
+        content: <SkeletonThree />,
+        className: "col-span-1",
+        thumbnail:
+            // "https://plus.unsplash.com/premium_photo-1665203421659-09089ede4ffa?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://as2.ftcdn.net/v2/jpg/09/18/13/87/1000_F_918138716_32540mkIIvgDlozp3z3nrdX168YkzGFm.jpg"
+    },
+    {
+        id: 4,
+        content: <SkeletonFour />,
+        className: "md:col-span-2",
+        thumbnail:
+            "https://www.creativegroupinc.com/wp-content/uploads/2019/02/sales-meeting.jpg",
+    },
+];
 
 
 export default function Welcome({
@@ -169,7 +267,7 @@ export default function Welcome({
 
 
             {/* Lamp effect  */}
-            <div id="lamp">
+            <div id="about">
                 <LampContainer>
                     <motion.h1
                         initial={{ opacity: 0.5, y: 100 }}
@@ -181,7 +279,7 @@ export default function Welcome({
                         }}
                         className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
                     >
-                        Build lamps <br /> the right way
+                        Build light <br /> the right way
                     </motion.h1>
                 </LampContainer>
             </div>
@@ -295,7 +393,7 @@ export default function Welcome({
 
 
             {/* Content Card GIF */}
-            <div className="bg-slate-950 py-10 px-5">
+            <div className="bg-slate-950 py-10 px-5" id="stories">
                 <div className="flex justify-center mb-10">
                     <TextGenerateEffect duration={2} filter={false} words={story} className="text-center" />
                 </div>
@@ -391,37 +489,16 @@ export default function Welcome({
                 </div>
             </div>
 
+            {/* Layout grid  */}
+            <div className="h-screen py-20 w-full bg-slate-950">
+            <div className="bg-slate-950 text-3xl text-white flex justify-center font-serif">Upcoming Events</div>
 
-            {/* Vortex  */}
-            {/* <div className="w-[calc(100%-4rem)] mx-auto rounded-md  h-screen overflow-hidden"> */}
-            <div className="w-full h-screen mx-auto rounded-md overflow-hidden">
-
-                <Vortex
-                    backgroundColor="black"
-                    rangeY={800}
-                    particleCount={500}
-                    baseHue={120}
-                    className="flex items-center flex-col justify-center px-2 md:px-10  py-4 w-full h-full"
-                >
-                    <h2 className="text-white text-2xl md:text-6xl font-bold text-center">
-                        The hell is this?
-                    </h2>
-                    <p className="text-white text-sm md:text-2xl max-w-xl mt-6 text-center">
-                        This is chemical burn. It&apos;ll hurt more than you&apos;ve ever been
-                        burned and you&apos;ll have a scar.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
-                        <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 transition duration-200 rounded-lg text-white shadow-[0px_2px_0px_0px_#FFFFFF40_inset]">
-                            Order now
-                        </button>
-                        <button className="px-4 py-2  text-white ">Watch trailer</button>
-                    </div>
-                </Vortex>
+                <LayoutGrid cards={cards} />
             </div>
 
 
             {/* Floating dock footer  */}
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center bg-slate-950">
                 <FloatingDock
                     mobileClassName="translate-y-20"
                     items={links}

@@ -14,8 +14,8 @@ import {
     useSpring,
     useTransform,
 } from "framer-motion";
-// import Link from "next/link";
 import { useRef, useState } from "react";
+
 
 export const FloatingDock = ({
     items,
@@ -28,12 +28,17 @@ export const FloatingDock = ({
 }) => {
     return (
         <>
-            <FloatingDockDesktop items={items} className={desktopClassName} />
-            <FloatingDockMobile items={items} className={mobileClassName} />
+            <FloatingDockDesktop
+                items={items}
+                className={cn("hidden md:block lg:block", FloatingDockDesktop)}
+            />
+            <FloatingDockMobile
+                items={items}
+                className={cn("block md:hidden", FloatingDockMobile)}
+            />
         </>
     );
 };
-
 const FloatingDockMobile = ({
     items,
     className,
@@ -44,6 +49,15 @@ const FloatingDockMobile = ({
     const [open, setOpen] = useState(false);
     return (
         <div className={cn("relative block md:hidden", className)}>
+            <div className="flex items-center justify-self-auto">
+                <button
+                    onClick={() => setOpen(!open)}
+                    className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center"
+                >
+                    <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+                </button>
+            </div>
+
             <AnimatePresence>
                 {open && (
                     <motion.div
@@ -79,12 +93,6 @@ const FloatingDockMobile = ({
                     </motion.div>
                 )}
             </AnimatePresence>
-            <button
-                onClick={() => setOpen(!open)}
-                className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center"
-            >
-                <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
-            </button>
         </div>
     );
 };
@@ -111,9 +119,6 @@ const FloatingDockDesktop = ({
                 {items.map((item) => (
                     <IconContainer mouseX={mouseX} key={item.title} {...item} />
                 ))}
-            </div>
-            <div className="text-neutral-500 dark:text-neutral-400 mr-4">
-                © 2024 Your Company Name
             </div>
         </motion.div>
     );
